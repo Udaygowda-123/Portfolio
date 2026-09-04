@@ -5,7 +5,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#06091A" />
 <title>Uday R — MERN Full Stack &amp; Next.js Developer</title>
-<meta name="description" content="Uday R — full stack developer in Bengaluru building production web apps end to end with React, Next.js, Node, Express and MongoDB." />
+<meta name="description" content="Uday R — Full Stack Developer in Bengaluru building production-ready web applications from database to interface with React, Next.js, Node.js, Express and MongoDB." />
+<meta name="author" content="Uday R" />
+
+<!-- ───────────────────────────────────────────────────────────────
+     ⚠️  ONE THING TO SET: replace every https://example.com below
+     with your live URL (Vercel or GitHub Pages). Link previews and
+     og:image need ABSOLUTE URLs — crawlers do not run JavaScript,
+     so this cannot be filled in at runtime.
+     ─────────────────────────────────────────────────────────────── -->
+<link rel="canonical" href="https://example.com/" />
+
+<!-- link previews: WhatsApp, LinkedIn, Slack, iMessage, Facebook -->
+<meta property="og:type"        content="website" />
+<meta property="og:site_name"   content="Uday R" />
+<meta property="og:title"       content="Uday R — MERN Full Stack &amp; Next.js Developer" />
+<meta property="og:description" content="Full Stack Developer in Bengaluru building production-ready web applications from database to interface. React, Next.js, Node.js, Express, MongoDB." />
+<meta property="og:url"         content="https://example.com/" />
+<meta property="og:image"       content="https://example.com/og.png" />
+<meta property="og:image:width"  content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt"   content="Uday R — MERN Full Stack &amp; Next.js Developer" />
+<meta property="og:locale"      content="en_IN" />
+
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Uday R — MERN Full Stack &amp; Next.js Developer" />
+<meta name="twitter:description" content="Full Stack Developer in Bengaluru building production-ready web applications from database to interface. React, Next.js, Node.js, Express, MongoDB." />
+<meta name="twitter:image"       content="https://example.com/og.png" />
+
+<!-- what search engines read to answer "who is this and what do they do" -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Uday R",
+  "jobTitle": "MERN Full Stack & Next.js Developer",
+  "description": "Full Stack Developer building production-ready web applications from database to interface with React, Next.js, Node.js, Express and MongoDB.",
+  "url": "https://example.com/",
+  "email": "Udayrg20@gmail.com",
+  "telephone": "+91-91482-09151",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bengaluru",
+    "addressRegion": "Karnataka",
+    "addressCountry": "IN"
+  },
+  "worksFor": { "@type": "Organization", "name": "ParentOf Solutions" },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Srinivas Institute of Technology, Mangalore"
+  },
+  "knowsAbout": [
+    "Full Stack Development", "MERN Stack", "React.js", "Next.js",
+    "Node.js", "Express.js", "MongoDB", "Mongoose", "TypeScript",
+    "JavaScript", "REST APIs", "Server-Side Rendering", "Firebase",
+    "Tailwind CSS", "Playwright", "Vitest", "Google Cloud"
+  ],
+  "sameAs": [
+    "https://linkedin.com/in/uday-r20",
+    "https://github.com/Udaygowda-123"
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2306091A'/%3E%3Cg fill='none' stroke-width='1.8'%3E%3Crect x='7' y='7' width='14' height='14' stroke='%238B7BFF'/%3E%3Crect x='11' y='11' width='14' height='14' stroke='%23FFB259'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,7 +242,10 @@ section[id],header[id]{scroll-margin-top:84px}
 .pulse::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--ok);opacity:.6;animation:ring 2.4s ease-out infinite}
 @keyframes ring{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.7);opacity:0}}
 
-h1.name{font-size:clamp(3.6rem,10.5vw,8.4rem);margin-bottom:16px}
+/* the h1 now carries both the name and the role, so these target .name
+   directly rather than the element */
+.hero-h1{display:block}
+.name{display:block;font-size:clamp(3.6rem,10.5vw,8.4rem);margin-bottom:16px}
 .ch{display:inline-block;overflow:hidden;vertical-align:bottom;
   padding-bottom:.08em;margin-bottom:-.08em}
 .ch>b{display:inline-block;font-weight:inherit;transform:translateY(115%) rotate(7deg);
@@ -189,7 +253,8 @@ h1.name{font-size:clamp(3.6rem,10.5vw,8.4rem);margin-bottom:16px}
 .ready .ch>b{transform:none}
 .ch.sp{width:.26em;overflow:visible}
 
-.role{font-size:clamp(1.25rem,3vw,2.05rem);font-weight:600;font-family:'Bricolage Grotesque',sans-serif;
+.role{display:block;font-size:clamp(1.25rem,3vw,2.05rem);font-weight:600;
+  font-family:'Bricolage Grotesque',sans-serif;
   letter-spacing:-.025em;margin-bottom:22px;line-height:1.15}
 .role .g{background:linear-gradient(100deg,var(--ui),var(--api) 32%,var(--data) 62%,var(--ui) 92%);
   background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
@@ -639,7 +704,7 @@ a,button{-webkit-tap-highlight-color:rgba(255,178,89,.16)}
     rgba(6,9,26,.64) 80%, rgba(6,9,26,.86) 91%, var(--base) 100%)}
   /* kept tight on purpose — a wide blur reads as a smudge in the margin
      rather than as contrast behind the glyphs */
-  h1.name{text-shadow:0 2px 16px rgba(6,9,26,.85)}
+  .name{text-shadow:0 2px 16px rgba(6,9,26,.85)}
   /* drop-shadow, not text-shadow: .role's gradient uses background-clip:text
      and a text-shadow can paint over the clipped fill */
   .role{filter:drop-shadow(0 1px 5px rgba(6,9,26,.98)) drop-shadow(0 0 11px rgba(6,9,26,.92))}
@@ -669,7 +734,7 @@ a,button{-webkit-tap-highlight-color:rgba(255,178,89,.16)}
   .hero{min-height:100svh}
   .hero-in{padding:110px 0 60px}
   .eyebrow{font-size:12.2px;padding:6px 14px 6px 10px;margin-bottom:22px}
-  h1.name{font-size:clamp(3rem,17.5vw,4.6rem);margin-bottom:12px}
+  .name{font-size:clamp(3rem,17.5vw,4.6rem);margin-bottom:12px}
   .role{font-size:clamp(1.1rem,5.6vw,1.55rem);margin-bottom:18px}
   .lede{font-size:15.2px;max-width:100%;margin-bottom:28px}
 
@@ -832,12 +897,14 @@ a,button{-webkit-tap-highlight-color:rgba(255,178,89,.16)}
   <div class="hero-in">
     <div class="wrap">
       <div class="eyebrow rise d1"><span class="pulse"></span> Bengaluru, India · Open to opportunities</div>
-      <h1 class="name" data-split>Uday R</h1>
-      <div class="role rise d3"><span class="g">MERN Full Stack &amp; Next.js</span> Developer</div>
-      <p class="lede rise d4">I build production web applications end to end — MongoDB schemas, Express APIs, and the React and Next.js interfaces people actually use. Currently shipping two products at ParentOf Solutions.</p>
+      <h1 class="hero-h1">
+        <span class="name" data-split>Uday R</span>
+        <span class="role rise d3"><span class="g">MERN Full Stack &amp; Next.js</span> Developer</span>
+      </h1>
+      <p class="lede rise d4">I build production-ready web applications from database to interface — MongoDB schemas, Node and Express APIs, and the React and Next.js interfaces people actually use. Currently shipping two products at ParentOf Solutions.</p>
       <div class="quickstats rise d5">
-        <div class="qs"><b data-count>8mo</b><span>Professional experience</span></div>
         <div class="qs"><b data-count>30+</b><span>Screens shipped</span></div>
+        <div class="qs"><b data-count>~40%</b><span>Faster API responses</span></div>
         <div class="qs"><b data-count>2</b><span>Live products</span></div>
       </div>
       <div class="cta-row rise d6">
@@ -1133,7 +1200,10 @@ $$('[data-split]').forEach(el => {
   el.textContent = '';
   let i = 0;
   txt.split('').forEach(c => {
-    if (c === ' '){ const s = document.createElement('span'); s.className = 'ch sp'; el.appendChild(s); return; }
+    /* a real text node, not an empty spacer span — this is inside the <h1>, so
+       the space has to survive into textContent for crawlers and screen
+       readers ("Uday R", not "UdayR") */
+    if (c === ' '){ el.appendChild(document.createTextNode(' ')); return; }
     const w = document.createElement('span');
     w.className = 'ch'; w.style.setProperty('--i', i++);
     const b = document.createElement('b'); b.textContent = c;

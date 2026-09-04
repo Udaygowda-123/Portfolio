@@ -209,12 +209,173 @@ h1.name{font-size:clamp(3.6rem,10vw,8rem);margin-bottom:14px}
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13.5px}
 .foot-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%}
 
+/* ===== under the hood ===== */
+.hood{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+@media(max-width:960px){.hood{grid-template-columns:1fr}}
+
+.demo{border:1px solid var(--line);border-radius:20px;background:var(--base);overflow:hidden}
+.demo-top{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 18px;border-bottom:1px solid var(--line);background:rgba(24,33,69,.55)}
+.demo-title{font-size:12.6px;color:var(--muted);letter-spacing:.04em}
+.replay{background:none;border:1px solid var(--line);color:var(--muted);border-radius:9px;
+  padding:7px 13px;font:inherit;font-size:12.5px;cursor:pointer;transition:.2s;min-height:38px}
+.replay:hover{color:var(--ink);border-color:var(--api)}
+.demo-body{padding:22px 18px 20px}
+
+.run{margin-bottom:24px}
+.run:last-of-type{margin-bottom:0}
+.run-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+.run-h b{font-size:13.6px;font-weight:600}
+.run.seq .run-h b{color:#FF8A8A}
+.run.par .run-h b{color:var(--data)}
+.run-total{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15.5px;
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.run.seq .run-total{color:#FF8A8A}
+.run.par .run-total{color:var(--data)}
+
+.track{display:grid;gap:7px}
+.qrow{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:center}
+.qname{font-size:11.6px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.qbar{height:16px;background:rgba(255,255,255,.05);border-radius:5px;position:relative;overflow:hidden}
+.qfill{position:absolute;top:0;bottom:0;border-radius:5px;width:0;left:0}
+.run.seq .qfill{background:linear-gradient(90deg,rgba(255,138,138,.5),#FF8A8A)}
+.run.par .qfill{background:linear-gradient(90deg,rgba(69,214,192,.45),var(--data))}
+.demo-note{font-size:12.2px;color:var(--muted);margin-top:20px;padding-top:14px;
+  border-top:1px solid var(--line);line-height:1.6}
+
+.code{border:1px solid var(--line);border-radius:20px;background:var(--base);overflow:hidden}
+.code-top{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);
+  background:rgba(24,33,69,.55);font-size:12.6px;color:var(--muted);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.code pre{margin:0;padding:22px 18px;overflow-x:auto;font-size:12.8px;line-height:1.8;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;-webkit-overflow-scrolling:touch}
+.code code{white-space:pre}
+.c-com{color:#5C6796;font-style:italic}
+.c-key{color:var(--ui)}
+.c-fn{color:var(--api)}
+.c-str{color:var(--data)}
+.c-pun{color:#6F7AA8}
+
+/* ===== mobile nav ===== */
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;
+  background:rgba(24,33,69,.6);cursor:pointer;padding:0;flex:none;
+  align-items:center;justify-content:center;flex-direction:column}
+.burger i{display:block;width:17px;height:1.7px;background:var(--ink);border-radius:2px;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),opacity .2s}
+.burger i+i{margin-top:4.4px}
+.burger[aria-expanded="true"] i:nth-child(1){transform:translateY(6.1px) rotate(45deg)}
+.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-6.1px) rotate(-45deg)}
+
+.sheet{position:fixed;inset:0 0 auto 0;z-index:55;background:rgba(12,17,36,.98);
+  backdrop-filter:blur(20px);border-bottom:1px solid var(--line);
+  padding:88px 24px calc(28px + env(safe-area-inset-bottom));
+  transform:translateY(-102%);transition:transform .42s cubic-bezier(.2,.7,.3,1);visibility:hidden}
+.sheet.open{transform:none;visibility:visible}
+.sheet a{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  text-decoration:none;color:var(--ink);font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:600;font-size:1.45rem;letter-spacing:-.03em;
+  padding:14px 0;border-bottom:1px solid var(--line);min-height:56px}
+.sheet a em{font-size:.7rem;color:var(--muted);font-family:'Inter',sans-serif;font-weight:400;font-style:normal}
+.sheet .sheet-cta{border-bottom:none;margin-top:22px;justify-content:center;
+  background:var(--api);color:#241601;border-radius:999px;font-size:1.02rem;padding:16px}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(22px) scale(.985);
   transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
 
 :focus-visible{outline:2px solid var(--api);outline-offset:3px;border-radius:5px}
+
+/* ===================== MOBILE ===================== */
+@media(hover:none){
+  .tilt:hover .glare{opacity:0}
+  .chip:hover{transform:none}
+  .row:hover{padding-left:0}
+}
+a,button{-webkit-tap-highlight-color:rgba(255,178,89,.16)}
+
+/* tablet */
+@media(max-width:900px){
+  body{font-size:16px}
+  .band{padding:84px 0}
+  .sec-head{margin-bottom:36px}
+  .wrap{padding:0 22px}
+  .nav-in{padding:12px 22px}
+}
+
+/* phone */
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  .nav-in{padding:11px 20px;padding-top:calc(11px + env(safe-area-inset-top))}
+  .burger{display:flex}
+  .nav-links{display:none}
+
+  .hero{min-height:100svh}
+  .hero-in{padding:104px 0 56px}
+  .eyebrow{font-size:12.4px;padding:6px 13px 6px 10px;margin-bottom:20px}
+  h1.name{font-size:clamp(3rem,17vw,4.4rem);margin-bottom:10px}
+  .role{font-size:clamp(1.1rem,5.4vw,1.5rem);margin-bottom:16px}
+  .lede{font-size:15.2px;max-width:100%;margin-bottom:26px}
+
+  /* stats become a 3-up strip so they never wrap awkwardly */
+  .quickstats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;
+    border:1px solid var(--line);border-radius:15px;padding:16px 12px;background:rgba(17,24,50,.6)}
+  .qs b{font-size:1.32rem}
+  .qs span{font-size:11px;line-height:1.35;display:block}
+
+  .cta-row{gap:10px}
+  .btn{padding:14px 22px;font-size:14.6px;min-height:50px;flex:1 1 auto;justify-content:center}
+
+  .band{padding:72px 0}
+  .sec-head h2{font-size:clamp(1.75rem,7.2vw,2.2rem)}
+  .sec-head p{font-size:15.2px}
+
+  .pill,.prod,.proj,.skl{padding:24px 20px;border-radius:18px}
+  .pill .num{font-size:2rem;margin-bottom:12px}
+  .prod h3{font-size:1.28rem}
+  .prod ul,.proj p,.pill p{font-size:14.7px}
+  .prod li{margin-bottom:9px}
+
+  .metrics{grid-template-columns:repeat(2,1fr);border-radius:16px}
+  .metric{padding:20px 16px}
+  .metric b{font-size:1.75rem}
+  .metric span{font-size:12.2px}
+
+  .demo-body{padding:18px 14px 16px}
+  .qrow{grid-template-columns:66px 1fr;gap:8px}
+  .qname{font-size:10.8px}
+  .code pre{font-size:11.6px;padding:18px 14px;line-height:1.75}
+  .code-top,.demo-top{padding:12px 14px}
+
+  .contact{padding:84px 0 56px}
+  .contact h2{font-size:clamp(2rem,9.5vw,2.8rem)}
+  .contact p{font-size:15.2px;margin-bottom:28px}
+  .socials{gap:9px}
+  .socials .btn{flex:1 1 40%;padding:13px 14px;font-size:14px}
+
+  footer{padding-bottom:calc(26px + env(safe-area-inset-bottom))}
+  .foot-in{justify-content:center;text-align:center;font-size:12.8px}
+}
+
+/* small phones */
+@media(max-width:380px){
+  .wrap{padding:0 16px}
+  .quickstats{padding:14px 8px;gap:8px}
+  .qs b{font-size:1.15rem}
+  .qs span{font-size:10.2px}
+  .btn{width:100%}
+  .metrics{grid-template-columns:1fr}
+}
+
+/* landscape phones — don't force full height */
+@media(max-height:520px) and (orientation:landscape){
+  .hero{min-height:auto}
+  .hero-in{padding:96px 0 48px}
+  .quickstats{margin-bottom:22px}
+}
+
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .rv,.rise{opacity:1;transform:none}
@@ -231,12 +392,25 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#work">Work</a>
+      <a href="#hood">Engineering</a>
       <a href="#stack">Stack</a>
       <a href="#projects">Projects</a>
       <a href="#contact" class="btn-sm">Get in touch</a>
     </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="sheet">
+      <i></i><i></i><i></i>
+    </button>
   </div>
 </nav>
+
+<div class="sheet" id="sheet">
+  <a href="#about">About <em>How I work</em></a>
+  <a href="#work">Work <em>Two live products</em></a>
+  <a href="#hood">Engineering <em>Under the hood</em></a>
+  <a href="#stack">Stack <em>Tools I use</em></a>
+  <a href="#projects">Projects <em>Personal builds</em></a>
+  <a href="#contact" class="sheet-cta">Get in touch</a>
+</div>
 
 <header class="hero" id="top">
   <canvas id="scene" aria-hidden="true"></canvas>
@@ -322,14 +496,15 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
       </div></article>
 
       <article class="prod b tilt rv"><div class="glare"></div><div class="lift">
-        <div class="prod-h"><h3>Fumi</h3><span class="tag">Frontend</span></div>
-        <div class="role-l">Mobile onboarding product</div>
+        <div class="prod-h"><h3>Fumi</h3><span class="tag">Full stack · Next.js</span></div>
+        <div class="role-l">Mobile onboarding product · end-to-end Next.js</div>
         <ul>
-          <li>Built the onboarding screens and a set of <b>reusable React components</b> now used across multiple product flows.</li>
-          <li>Next.js nested layouts and API routes keeping the onboarding funnel fast and consistent.</li>
-          <li>Firebase Auth wired through the onboarding flow end to end.</li>
-          <li>Mobile-first, responsive builds taken straight from design into production.</li>
-          <li>Worked directly with product and design to turn requirements into shippable experiences.</li>
+          <li>Built as a <b>full stack Next.js application</b> — server components, route handlers and the data layer all in one codebase.</li>
+          <li><b>Next.js API routes as the backend</b>, talking directly to MongoDB and keeping secrets and third-party calls server-side.</li>
+          <li>Onboarding screens plus a set of <b>reusable React components</b> now used across multiple product flows.</li>
+          <li>Nested layouts and server-side data fetching keeping the onboarding funnel fast and consistent between steps.</li>
+          <li>Firebase Auth wired through the whole flow, from first screen to authenticated session.</li>
+          <li>Mobile-first and responsive, taken straight from design into production with product and design.</li>
         </ul>
       </div></article>
     </div>
@@ -343,7 +518,55 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
   </div>
 </section>
 
-<section class="band" id="stack">
+<section class="band" id="hood">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Under the hood</h2>
+      <p>The API change I'm most pleased with. Independent MongoDB queries were being awaited one after another — nothing depended on the result before it, so every request paid the full sum of the wait. Firing them together with <code>Promise.all</code> means a request now costs roughly the slowest single query instead.</p>
+    </div>
+
+    <div class="hood">
+      <div class="demo rv" id="demo">
+        <div class="demo-top">
+          <span class="demo-title">GET /api/dashboard</span>
+          <button class="replay" id="replay">Run again</button>
+        </div>
+        <div class="demo-body">
+          <div class="run seq">
+            <div class="run-h"><b>Before — sequential awaits</b><span class="run-total" id="tSeq">0 ms</span></div>
+            <div class="track" id="trackSeq"></div>
+          </div>
+          <div class="run par">
+            <div class="run-h"><b>After — Promise.all</b><span class="run-total" id="tPar">0 ms</span></div>
+            <div class="track" id="trackPar"></div>
+          </div>
+          <p class="demo-note">Illustrative timings to show the shape of the change — the queries are independent, so the total collapses from their sum to their maximum.</p>
+        </div>
+      </div>
+
+      <div class="code rv">
+        <div class="code-top">controllers/dashboard.js</div>
+<pre><code><span class="c-com">// before — each query waits on the one above it</span>
+<span class="c-key">const</span> user     <span class="c-pun">=</span> <span class="c-key">await</span> User<span class="c-pun">.</span><span class="c-fn">findById</span><span class="c-pun">(</span>id<span class="c-pun">);</span>
+<span class="c-key">const</span> sessions <span class="c-pun">=</span> <span class="c-key">await</span> Session<span class="c-pun">.</span><span class="c-fn">find</span><span class="c-pun">({</span> user<span class="c-pun">:</span> id <span class="c-pun">});</span>
+<span class="c-key">const</span> scores   <span class="c-pun">=</span> <span class="c-key">await</span> Score<span class="c-pun">.</span><span class="c-fn">find</span><span class="c-pun">({</span> user<span class="c-pun">:</span> id <span class="c-pun">});</span>
+<span class="c-key">const</span> streaks  <span class="c-pun">=</span> <span class="c-key">await</span> Streak<span class="c-pun">.</span><span class="c-fn">find</span><span class="c-pun">({</span> user<span class="c-pun">:</span> id <span class="c-pun">});</span>
+
+<span class="c-com">// after — nothing depends on the last, so fire together</span>
+<span class="c-key">const</span> <span class="c-pun">[</span>user<span class="c-pun">,</span> sessions<span class="c-pun">,</span> scores<span class="c-pun">,</span> streaks<span class="c-pun">]</span> <span class="c-pun">=</span>
+  <span class="c-key">await</span> Promise<span class="c-pun">.</span><span class="c-fn">all</span><span class="c-pun">([</span>
+    User<span class="c-pun">.</span><span class="c-fn">findById</span><span class="c-pun">(</span>id<span class="c-pun">),</span>
+    Session<span class="c-pun">.</span><span class="c-fn">find</span><span class="c-pun">({</span> user<span class="c-pun">:</span> id <span class="c-pun">}),</span>
+    Score<span class="c-pun">.</span><span class="c-fn">find</span><span class="c-pun">({</span> user<span class="c-pun">:</span> id <span class="c-pun">}),</span>
+    Streak<span class="c-pun">.</span><span class="c-fn">find</span><span class="c-pun">({</span> user<span class="c-pun">:</span> id <span class="c-pun">}),</span>
+  <span class="c-pun">]);</span>
+</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="stack">
   <div class="wrap">
     <div class="sec-head rv">
       <h2>The stack I reach for</h2>
@@ -378,7 +601,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
   </div>
 </section>
 
-<section class="band band-alt" id="projects">
+<section class="band" id="projects">
   <div class="wrap">
     <div class="sec-head rv">
       <h2>Personal projects</h2>
@@ -402,7 +625,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-s
   </div>
 </section>
 
-<section class="band">
+<section class="band band-alt">
   <div class="wrap">
     <div class="sec-head rv"><h2>Background</h2></div>
     <div class="rows rv">
@@ -494,13 +717,99 @@ if (!reduce && matchMedia('(hover:hover)').matches){
   });
 }
 
+/* ===== mobile menu ===== */
+(function(){
+  const burger = document.getElementById('burger'), sheet = document.getElementById('sheet');
+  if (!burger || !sheet) return;
+  function setOpen(on){
+    burger.setAttribute('aria-expanded', on ? 'true' : 'false');
+    burger.setAttribute('aria-label', on ? 'Close menu' : 'Open menu');
+    sheet.classList.toggle('open', on);
+    document.body.style.overflow = on ? 'hidden' : '';
+  }
+  burger.addEventListener('click', () => setOpen(sheet.classList.contains('open') === false));
+  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+  matchMedia('(min-width:641px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
+})();
+
+/* ===== sequential vs parallel race ===== */
+(function(){
+  const QUERIES = [
+    {n:'User',    ms:180},
+    {n:'Session', ms:165},
+    {n:'Score',   ms:150},
+    {n:'Streak',  ms:145}
+  ];
+  const SEQ_TOTAL = QUERIES.reduce((a,q) => a + q.ms, 0);
+  const PAR_TOTAL = Math.max.apply(null, QUERIES.map(q => q.ms));
+  const SCALE = SEQ_TOTAL;                      // both tracks share one time axis
+  const DURATION = 2100;                        // ms of wall-clock for the whole animation
+
+  const tS = document.getElementById('trackSeq'), tP = document.getElementById('trackPar');
+  const outS = document.getElementById('tSeq'),  outP = document.getElementById('tPar');
+  const demo = document.getElementById('demo'),  replay = document.getElementById('replay');
+  if (!tS || !tP) return;
+
+  const bars = {seq:[], par:[]};
+  QUERIES.forEach(q => {
+    ['seq','par'].forEach(k => {
+      const row = document.createElement('div');
+      row.className = 'qrow';
+      row.innerHTML = '<span class="qname">' + q.n + '</span><span class="qbar"><i class="qfill"></i></span>';
+      (k === 'seq' ? tS : tP).appendChild(row);
+      bars[k].push(row.querySelector('.qfill'));
+    });
+  });
+
+  /* start offset (ms on the shared axis) for each bar */
+  let acc = 0;
+  const seqStart = QUERIES.map(q => { const s = acc; acc += q.ms; return s; });
+  const parStart = QUERIES.map(() => 0);
+
+  function paint(elapsedMs){
+    ['seq','par'].forEach(k => {
+      const starts = k === 'seq' ? seqStart : parStart;
+      bars[k].forEach((el,i) => {
+        const q = QUERIES[i];
+        const done = Math.min(Math.max(elapsedMs - starts[i], 0), q.ms);
+        el.style.left  = (starts[i] / SCALE * 100) + '%';
+        el.style.width = (done / SCALE * 100) + '%';
+      });
+    });
+    outS.textContent = Math.round(Math.min(elapsedMs, SEQ_TOTAL)) + ' ms';
+    outP.textContent = Math.round(Math.min(elapsedMs, PAR_TOTAL)) + ' ms';
+  }
+
+  let raf = null;
+  function run(){
+    if (raf) cancelAnimationFrame(raf);
+    if (reduce){ paint(SEQ_TOTAL); return; }
+    const t0 = performance.now();
+    (function step(now){
+      const p = Math.min((now - t0) / DURATION, 1);
+      paint(p * SEQ_TOTAL);
+      if (p < 1) raf = requestAnimationFrame(step);
+    })(t0);
+  }
+
+  if (replay) replay.addEventListener('click', run);
+  paint(0);
+
+  const dio = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting){ run(); dio.unobserve(e.target); } });
+  }, {threshold:.4});
+  if (demo) dio.observe(demo);
+})();
+
 /* ============ HERO: the full stack, in 3D ============ */
 (function(){
   const canvas = document.getElementById('scene');
   if (!window.THREE || !canvas){ document.body.classList.add('ready'); return; }
 
   const renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const isPhone = innerWidth < 700;
+  renderer.setPixelRatio(Math.min(devicePixelRatio, isPhone ? 1.6 : 2));
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(46, 1, .1, 400);
@@ -513,7 +822,7 @@ if (!reduce && matchMedia('(hover:hover)').matches){
 
   const COLORS = [0x8B7BFF, 0xFFB259, 0x45D6C0];   // UI / API / DATA
   const YS     = [7.5, 0, -7.5];
-  const SIZE = 26, DIV = 9;
+  const SIZE = 26, DIV = isPhone ? 7 : 9;
 
   function disc(){
     const s=64,c=document.createElement('canvas');c.width=c.height=s;
@@ -569,7 +878,7 @@ if (!reduce && matchMedia('(hover:hover)').matches){
   }
 
   /* packets travelling between the layers */
-  const PK = 26, pk = [], pkPos = new Float32Array(PK*3);
+  const PK = isPhone ? 14 : 26, pk = [], pkPos = new Float32Array(PK*3);
   for (let i = 0; i < PK; i++){
     pk.push({
       x:(Math.random()-.5)*SIZE, z:(Math.random()-.5)*SIZE,
@@ -605,7 +914,8 @@ if (!reduce && matchMedia('(hover:hover)').matches){
 
   /* ambient depth */
   const sPts = [];
-  for (let i=0;i<260;i++)
+  const STARS = isPhone ? 120 : 260;
+  for (let i=0;i<STARS;i++)
     sPts.push(new THREE.Vector3((Math.random()-.5)*150,(Math.random()-.5)*90,(Math.random()-.5)*120));
   scene.add(new THREE.Points(
     new THREE.BufferGeometry().setFromPoints(sPts),
@@ -632,7 +942,15 @@ if (!reduce && matchMedia('(hover:hover)').matches){
     }
   }
 
+  let visible = true;
+  document.addEventListener('visibilitychange', function(){ visible = !document.hidden; });
+  let heroOn = true;
+  new IntersectionObserver(function(es){ heroOn = es[0].isIntersecting; }, {threshold:0})
+    .observe(document.getElementById('top'));
+
   function frame(){
+    requestAnimationFrame(frame);
+    if (!visible || !heroOn) return;
     size();
     if (!reduce){
       t += .01;
@@ -645,7 +963,6 @@ if (!reduce && matchMedia('(hover:hover)').matches){
       packets();
     }
     renderer.render(scene,camera);
-    requestAnimationFrame(frame);
   }
   frame();
 
